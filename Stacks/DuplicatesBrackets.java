@@ -9,9 +9,30 @@ e.g.'
 
 
 class DuplicatesBrackets{
-     public static void main(String[] args){
-     
-     
-     
-     }
+      public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+       String s = sc.nextLine();
+       Stack<Character> st = new Stack<>();
+       
+       for(int i = 0; i < s.length(); i++){
+           char ch = s.charAt(i);
+           if(ch == ')'){
+               // now char is ) in this case
+               // agar peek directly ( milta he to mtlb usme content ni he vo duplicate he to true return kardo
+               if(st.peek() == '('){
+                   System.out.println(true);
+                   return;
+               }
+               // vrna tab tak pop krte jao jab tak ) na mil jay or use bhi pop kardo
+               while(st.peek() != '('){
+                   st.pop();
+               }
+               st.pop();
+           }
+           else{
+               st.push(ch);
+           }
+       }
+       System.out.println(false);
+    }
 }
