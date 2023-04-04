@@ -1,3 +1,4 @@
+// GFG
 class StockSpan
 {
     //Function to calculate the span of stockâ€™s price for all n days.
@@ -27,4 +28,29 @@ class StockSpan
         
     }
     
+}
+
+// Online stock problem leetcode
+class StockSpanner {
+    Stack<int[]> st = new Stack<>();
+    int i = -1;
+    public StockSpanner() {
+        
+    }
+    
+    public int next(int price) {
+       i+=1; // whenever the next function is called we will increase the index by 1
+      // Find the previous greater element
+       while(!st.isEmpty() && st.peek()[1] <= price){
+            st.pop();
+       }
+       // If there is no previous greater element
+       if(st.isEmpty()){
+            st.push(new int[]{i,price});
+            return i + 1;
+       }
+        int prevIndex = st.peek()[0]; // get index of previous greater element
+        st.push(new int[]{i, price});
+        return i - prevIndex;
+    }
 }
