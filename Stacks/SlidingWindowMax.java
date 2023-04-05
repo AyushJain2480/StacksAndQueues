@@ -1,3 +1,5 @@
+
+// O(N) yhi he kharab ke lie j = i se chla do
 class SlidingWIndowMax {
     public int[] maxSlidingWindow(int[] nums, int k) {
         int[] nge = new int[nums.length];
