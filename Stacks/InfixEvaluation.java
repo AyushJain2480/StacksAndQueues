@@ -38,7 +38,7 @@ public static void main(String[] args) throws Exception {
         }
         else if(ch == '+' || ch == '-' || ch == '/' || ch == '*'){
             // ch is wanting higher priority operators to solve first
-            while(opnds.peek() != '(' && opnds.size() != 0 && precedence(ch) <= precedence(optors.peek())){
+            while(!opnds.isEmpty() && opnds.peek() != '(' && !optors.isEmpty() && precedence(ch) <= precedence(optors.peek())){
                 int val1 = opnds.pop();
                 int val2 = opnds.pop();
                 char operator = optors.pop();
@@ -71,7 +71,7 @@ public static void main(String[] args) throws Exception {
     else if(optor == '*'){
         return 2;
     }
-    else if(optor == '/){
+    else if(optor == '/'){
         return 2;
     }
  }
@@ -86,7 +86,7 @@ public static void main(String[] args) throws Exception {
     else if(optor == '*'){
         return v1 * v2;
     }
-    else if(optor == '/){
+    else if(optor == '/'){
         return v1 / v2;
     } 
  }
