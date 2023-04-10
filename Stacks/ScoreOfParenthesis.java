@@ -35,3 +35,28 @@ class Solution {
         return sum;
     }
 }
+
+
+class Solution {
+    int i = 0;
+    public int scoreOfParentheses(String str) {
+      return recursion(str);
+    }
+    
+    public int recursion(String s){
+         int score = 0;
+         while(i < s.length()){
+             char ch = s.charAt(i++);
+             if(ch == '('){
+                 score += recursion(s);
+             }else{
+                 if(score == 0){
+                     return 1;
+                 }else{
+                     return 2 * score;
+                 }
+             }
+         }
+        return score;
+    }
+}
