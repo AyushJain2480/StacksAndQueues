@@ -66,4 +66,35 @@ class Solution {
      return sb.reverse().toString();
     }
 }
+// Accepted hah really tough
+class Solution {
+    public String removeDuplicates(String s, int k) {
+      // we will not use temp stack in this approach instead we will try 
+      // to store key value pair in the stack where key is char and count is integer
+      // if we get the same char that is at the top we will increase the count for that 
+      // char and if the count reaches k than we will pop that pair
+      Stack<int[]> main = new Stack<>();
+        
+      for(char ch : s.toCharArray()){
+          // if current char is same as prev char
+          if(!main.isEmpty() && main.peek()[0] == ch){
+              main.peek()[1]++; // increment the count
+          }else{
+              // otherwise we need to push a new char array 
+              main.push(new int[]{ch,1});
+          }
+          // if the count of the top char is equal to k simply pop it out
+          if(main.peek()[1] == k) main.pop();
+      }
+        
+      StringBuilder sb = new StringBuilder();
+      while(!main.isEmpty()){
+          int[] top = main.pop();
+          while(top[1]-- > 0){
+              sb.append((char)top[0]);
+          }
+      }
+     return sb.reverse().toString();
+    }
+}
 
