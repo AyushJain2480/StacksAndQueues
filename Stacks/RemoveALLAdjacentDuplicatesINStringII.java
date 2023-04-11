@@ -26,7 +26,8 @@ class Solution {
     return s;
 }
 }
-
+// Time : O(N*K)
+// space : O(N)
 class Solution {
     public String removeDuplicates(String s, int k) {
      // Using 2 Stacks
