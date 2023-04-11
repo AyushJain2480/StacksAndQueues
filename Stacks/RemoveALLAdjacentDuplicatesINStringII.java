@@ -26,3 +26,43 @@ class Solution {
     return s;
 }
 }
+
+class Solution {
+    public String removeDuplicates(String s, int k) {
+     // Using 2 Stacks
+     // we will take the first char in temp stack and than we will check the top of 
+     // main and temp stack if they are same we will pop the top of main and push it in 
+     // temp and we will check the size of the temp if i.e equal to k that means we have 
+     // k continous same chars in temp so we discarded the temp stack
+     // if the top of the main does not matches with the top of the temp stack 
+     // than we will not shift the char from the main to the temp and if the temp 
+     // size is not equal to k i.e means the top which is not same break the count to 
+     // reach k so pop the chars from the temp and push it in main stack
+     // at last our soln is present in the stack we will apppend it in strinbuilder 
+     // and reverse the string as stack works in LIFO manner
+     Stack<Character> main = new Stack<>();
+     for(char ch : s.toCharArray()){
+         Stack<Character> temp  = new Stack<>();
+         temp.push(ch);
+         // jab tak same milre he main se uthao or temp me dalo 
+            while(!main.isEmpty() && main.peek() == ch){
+                temp.push(main.pop());
+            }
+         // dalne k bad check kro agar k size ke nhi hore to vapis daldo 
+         // agar hore honge to temp me hi pde rehndo age bdo next step 
+         // me vese bhi new stack use hogi
+             if(temp.size() != k){
+                 while(!temp.isEmpty()){
+                     main.push(temp.pop());
+                 }
+             }
+         }
+        
+     StringBuilder sb = new StringBuilder();
+     while(!main.isEmpty()){
+         sb.append(main.pop());
+     }
+     return sb.reverse().toString();
+    }
+}
+
