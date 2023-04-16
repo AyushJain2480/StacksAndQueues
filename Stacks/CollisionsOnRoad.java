@@ -18,7 +18,10 @@ class Solution {
                 curr = 'S';
                 collisions+=1;
             }
-        
+            // [S L] L  S L se tkrayga to L bhi rukega to use S krdo kyuki age ke sb tkrayge 
+            
+            // RRRR [R L] see ye tkkr ke bad curr S ruk jayga to curr L se S krdo 
+            // kyuki sare RRRR ab takrayge 
             while(!stack.isEmpty() && ((stack.peek() == 'R' && curr == 'S') )){
                 collisions+=1;
               stack.pop();
